@@ -2,22 +2,87 @@
   "expo": {
     "name": "FitSocial",
     "slug": "fitsocial",
+    "scheme": "fitsocial",
+    "version": "1.0.0",
+    "orientation": "portrait",
     "icon": "./assets/icons/fit-social-icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/icons/fit-social-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/c4623455-e198-4858-bf3b-f6b700368e7c"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "experiments": {
       "typedRoutes": true
     },
     "plugins": [
-      "expo-barcode-scanner"
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ],
+      "expo-camera",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icons/fit-social-icon.png"
+        }
+      ],
+      "expo-web-browser"
     ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.bearrsa.fitsocial",
+      "icon": "./assets/icons/fit-social-icon.png",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "FitSocial uses your location to track your jogs and show accurate distance and pace.",
+        "NSCameraUsageDescription": "FitSocial uses the camera so you can take photos of your meals for AI calorie estimation.",
+        "NSPhotoLibraryUsageDescription": "FitSocial needs access to your photo library so you can upload meal photos from your gallery.",
+        "NSUserTrackingUsageDescription": "FitSocial may use your ID to improve app analytics and experience."
+      }
+    },
     "android": {
+      "package": "com.bearrsa.fitsocial",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/fit-social-icon.png",
         "backgroundColor": "#000000"
       }
     },
-    "ios": {
-      "supportsTablet": true,
-      "icon": "./assets/icons/fit-social-icon.png"
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#000000"
+    },
+    "extra": {
+      "appEnv": "development",
+      "router": {
+        "origin": "expo"
+      },
+      "eas": {
+        "projectId": "c4623455-e198-4858-bf3b-f6b700368e7c"
+      }
     }
   }
 }
